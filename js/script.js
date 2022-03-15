@@ -107,3 +107,32 @@ document.getElementById('apply-price-filter').addEventListener('click',function 
   list(filter)
 })
 
+
+
+function createElement() {
+  let checkbox = document.querySelectorAll('input[type=checkbox]')
+  
+  for (let i = 0; i < checkbox.length; i++) {
+    document.getElementById(`provider-${i+1}`).addEventListener('change', event => {
+      action()
+      if (event.target.checked) {
+        let temp = []
+        for (let j = 0; j < books.length; j++) {
+          if (books[j].provider === checkbox[i].labels[0].textContent) {
+            temp.push(books[j])
+          }
+        }
+        list(temp);
+      }
+    })}}
+// document.getElementById('provider-1').addEventListener('change', event => {
+//   console.log(event.target.checked);
+// })
+function action() {
+  let box = document.getElementsByClassName('item')
+  for (let i = 0; box.length > 0; i++) {
+    box[0].remove()
+  }
+  createElement()
+}
+
